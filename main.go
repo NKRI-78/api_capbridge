@@ -61,18 +61,9 @@ func main() {
 		}
 	}
 
-	// Courier
-	router.HandleFunc("/api/v1/courier-list", controllers.CourierList).Methods("GET")
-	router.HandleFunc("/api/v1/courier-rate-list", controllers.CourierRateList).Methods("GET")
-	router.HandleFunc("/api/v1/create-location", controllers.CreateLocation).Methods("POST")
-	router.HandleFunc("/api/v1/rate-by-coordinate", controllers.RateByCoordinate).Methods("POST")
-
-	// Tracking
-	router.HandleFunc("/api/v1/tracking", controllers.Tracking).Methods("POST")
-
-	// Order
-	router.HandleFunc("/api/v1/order-by-coordinate", controllers.OrderByCoordinate).Methods("POST")
-	router.HandleFunc("/api/v1/order-info", controllers.OrderInfo).Methods("POST")
+	// Auth
+	router.HandleFunc("/api/v1/auth/login", controllers.Login).Methods("POST")
+	router.HandleFunc("/api/v1/auth/register", controllers.Register).Methods("POST")
 
 	// Project
 	router.HandleFunc("/api/v1/project/list", controllers.ProjectList).Methods("GET")
