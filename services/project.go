@@ -19,7 +19,7 @@ func ProjectList() (map[string]any, error) {
 	var rows *sql.Rows
 	var err error
 
-	rows, err = dbPPOB.Debug().Raw(query).Rows()
+	rows, err = dbDefault.Debug().Raw(query).Rows()
 
 	if err != nil {
 		helper.Logger("error", "In Server: "+err.Error())
@@ -28,7 +28,7 @@ func ProjectList() (map[string]any, error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		errProjectRows := dbPPOB.ScanRows(rows, &project)
+		errProjectRows := dbDefault.ScanRows(rows, &project)
 
 		if errProjectRows != nil {
 			helper.Logger("error", "In Server: "+errProjectRows.Error())
@@ -60,12 +60,10 @@ func ProjectList() (map[string]any, error) {
 }
 
 func ProjectStore(ps *entities.ProjectStore) (map[string]any, error) {
-
 	return map[string]any{}, nil
 }
 
 func ProjectUpdate(pu *entities.ProjectUpdate) (map[string]any, error) {
-
 	return map[string]any{}, nil
 }
 
