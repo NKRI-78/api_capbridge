@@ -1,0 +1,6 @@
+[INFO]: 2025-03-26 11:37:32 - Get All Courier success
+[ERROR]: 2025-03-26 11:40:23 - In Server: Missing auth token
+[ERROR]: 2025-03-26 11:40:37 - In Server: json: cannot unmarshal string into Go struct field CreateLocation.postal_code of type int
+[ERROR]: 2025-03-26 11:41:03 - In Server: json: cannot unmarshal number -6.272032444773893 into Go struct field CreateLocation.latitude of type int
+[ERROR]: 2025-03-26 11:41:04 - In Server: json: cannot unmarshal number -6.272032444773893 into Go struct field CreateLocation.latitude of type int
+[INFO]: 2025-03-26 11:41:55 - Form Region success
