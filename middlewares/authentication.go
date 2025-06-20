@@ -7,6 +7,8 @@ import (
 	"strings"
 	helper "superapps/helpers"
 
+	"slices"
+
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -44,30 +46,21 @@ func JwtAuthentication(next http.Handler) http.Handler {
 
 		// Define public paths that do not require authentication
 		publicPaths := []string{
-			// This covers exact "/api/v1/"
+			"/api/v1/auth/login",
+			"/api/v1/auth/register",
 		}
 
 		// Allow access to job-detail/:id
-		if strings.HasPrefix(r.URL.Path, "/api/v1/job-detail/") {
+		// if strings.HasPrefix(r.URL.Path, "/api/v1/job-detail/") {
+		// 	next.ServeHTTP(w, r)
+		// 	return
+		// }
+
+		if slices.Contains(publicPaths, r.URL.Path) {
 			next.ServeHTTP(w, r)
 			return
 		}
 
-		// Allow access to news/detail/:id
-		if strings.HasPrefix(r.URL.Path, "/api/v1/news-detail/") {
-			next.ServeHTTP(w, r)
-			return
-		}
-
-		// Check if the request URL is in the publicPaths list
-		for _, path := range publicPaths {
-			if r.URL.Path == path {
-				next.ServeHTTP(w, r)
-				return
-			}
-		}
-
-		// Authentication required for other routes
 		tokenHeader := r.Header.Get("Authorization")
 
 		if tokenHeader == "" {

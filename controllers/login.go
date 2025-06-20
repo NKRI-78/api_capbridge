@@ -43,5 +43,5 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	helper.Logger("info", "Login success")
-	helper.Response(w, http.StatusOK, false, "Successfully", result["data"])
+	helper.Response(w, http.StatusOK, false, "Successfully", result)
 }

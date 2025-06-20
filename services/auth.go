@@ -4,56 +4,67 @@ import (
 	"errors"
 	"superapps/entities"
 	helper "superapps/helpers"
-	middleware "superapps/middlewares"
+	"superapps/middlewares"
 
 	uuid "github.com/satori/go.uuid"
-	"golang.org/x/crypto/bcrypt"
 )
 
-func Login(l *entities.Login) (map[string]any, error) {
+func Login(l *entities.Login) (entities.LoginResponse, error) {
 
-	loginScan := entities.LoginScan{}
 	users := []entities.LoginScan{}
 
-	queryUserExist := `SELECT uid AS id, enabled, password, verify FROM users WHERE email = ?`
+	queryUserExist := `SELECT uid AS id, enabled, password, verify, email FROM users WHERE email = ?`
 
-	err := dbDefault.Debug().Raw(queryUserExist, l.Email).Scan(&loginScan).Error
+	errUser := dbDefault.Debug().Raw(queryUserExist, l.Email).Scan(&users).Error
 
-	if err != nil {
-		helper.Logger("error", "In Server: "+err.Error())
-		return nil, errors.New(err.Error())
+	if errUser != nil {
+		helper.Logger("error", "In Server: "+errUser.Error())
+		return entities.LoginResponse{}, errors.New(errUser.Error())
 	}
 
 	isUserExist := len(users)
 
 	if isUserExist == 0 {
-		return nil, errors.New("USER_NOT_FOUND")
+		helper.Logger("error", "In Server: USER_NOT_FOUND")
+		return entities.LoginResponse{}, errors.New("USER_NOT_FOUND")
 	}
 
 	passHashed := users[0].Password
 
-	err = helper.VerifyPassword(passHashed, loginScan.Password)
+	errVerify := helper.VerifyPassword(passHashed, l.Password)
 
-	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword {
-		helper.Logger("error", "In Server: "+err.Error())
-		return nil, errors.New("CREDENTIALS_IS_INCORRECT")
+	if errVerify != nil {
+		helper.Logger("error", "In Server: CREDENTIALS_IS_INCORRECT")
+		return entities.LoginResponse{}, errors.New("CREDENTIALS_IS_INCORRECT")
 	}
 
-	token, err := middleware.CreateToken(loginScan.Id)
-	if err != nil {
-		helper.Logger("error", "In Server: "+err.Error())
-		return nil, err
+	token, errToken := middlewares.CreateToken(users[0].Id)
+	if errToken != nil {
+		helper.Logger("error", "In Server: "+errToken.Error())
+		return entities.LoginResponse{}, errToken
 	}
 
 	access := token["token"]
 
-	return map[string]any{
-		"data": access,
+	return entities.LoginResponse{
+		Id:       users[0].Id,
+		Email:    users[0].Email,
+		Password: users[0].Password,
+		Enabled:  users[0].Enabled,
+		Verify:   users[0].Verify,
+		Token:    access,
 	}, nil
 }
 
-func Register(r *entities.Register) (map[string]any, error) {
+func Register(r *entities.Register) (entities.RegisterResponse, error) {
 
+	hashedPassword, errHasshed := helper.Hash(r.Password)
+	if errHasshed != nil {
+		helper.Logger("error", "In Server: "+errHasshed.Error())
+		return entities.RegisterResponse{}, errors.New(errHasshed.Error())
+	}
+
+	users := []entities.LoginScan{}
 	roles := []entities.CheckRole{}
 
 	r.UserId = uuid.NewV4().String()
@@ -64,35 +75,64 @@ func Register(r *entities.Register) (map[string]any, error) {
 
 	if errCheckRole != nil {
 		helper.Logger("error", "In Server: "+errCheckRole.Error())
-		return nil, errors.New(errCheckRole.Error())
+		return entities.RegisterResponse{}, errors.New(errCheckRole.Error())
 	}
 
 	isCheckRoleExist := len(roles)
 
 	if isCheckRoleExist == 0 {
-		helper.Logger("error", "In Server: Role not found")
-		return nil, errors.New("ROLE_NOT_FOUND")
+		helper.Logger("error", "In Server: ROLE_NOT_FOUND")
+		return entities.RegisterResponse{}, errors.New("ROLE_NOT_FOUND")
 	}
 
-	queryInsertUser := `INSERT INTO users (uid, email, phone) VALUES (?, ?, ?)`
+	queryUserExist := `SELECT uid AS id, enabled, password, verify, email FROM users WHERE email = ?`
 
-	errInsertUser := dbDefault.Debug().Exec(queryInsertUser, r.UserId, r.Email, r.Phone).Error
+	errUserExist := dbDefault.Debug().Raw(queryUserExist, r.Email).Scan(&users).Error
+
+	if errUserExist != nil {
+		helper.Logger("error", "In Server: "+errUserExist.Error())
+		return entities.RegisterResponse{}, errors.New(errUserExist.Error())
+	}
+
+	isUserExist := len(users)
+
+	if isUserExist == 1 {
+		helper.Logger("error", "In Server: USER_ALREADY_EXIST")
+		return entities.RegisterResponse{}, errors.New("USER_ALREADY_EXIST")
+	}
+
+	queryInsertUser := `INSERT INTO users (uid, email, phone, password) VALUES (?, ?, ?, ?)`
+
+	errInsertUser := dbDefault.Debug().Exec(queryInsertUser, r.UserId, r.Email, r.Phone, hashedPassword).Error
 
 	if errInsertUser != nil {
 		helper.Logger("error", "In Server: "+errInsertUser.Error())
-		return nil, errors.New(errInsertUser.Error())
+		return entities.RegisterResponse{}, errors.New(errInsertUser.Error())
 	}
 
 	queryInsertProfile := `INSERT INTO profiles (user_id, fullname) VALUES (?, ?)`
 
-	err := dbDefault.Debug().Exec(queryInsertProfile, r.UserId, r.Fullname).Error
+	errInsertProfile := dbDefault.Debug().Exec(queryInsertProfile, r.UserId, r.Fullname).Error
 
-	if err != nil {
-		helper.Logger("error", "In Server: "+err.Error())
-		return nil, errors.New(err.Error())
+	if errInsertProfile != nil {
+		helper.Logger("error", "In Server: "+errInsertProfile.Error())
+		return entities.RegisterResponse{}, errInsertProfile
 	}
 
-	return map[string]any{
-		"data": r,
+	token, errToken := middlewares.CreateToken(r.UserId)
+	if errToken != nil {
+		helper.Logger("error", "In Server: "+errToken.Error())
+		return entities.RegisterResponse{}, errToken
+	}
+
+	access := token["token"]
+
+	return entities.RegisterResponse{
+		Id:       r.UserId,
+		Email:    r.Email,
+		Password: string(hashedPassword),
+		Enabled:  false,
+		Verify:   false,
+		Token:    access,
 	}, nil
 }

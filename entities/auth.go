@@ -17,8 +17,27 @@ type Login struct {
 type LoginScan struct {
 	Id       string `json:"id"`
 	Enabled  bool   `json:"enabled"`
+	Email    string `json:"email"`
 	Verify   bool   `json:"verify"`
 	Password string `json:"password"`
+}
+
+type LoginResponse struct {
+	Id       string `json:"id"`
+	Enabled  bool   `json:"enabled"`
+	Email    string `json:"email"`
+	Verify   bool   `json:"verify"`
+	Password string `json:"password"`
+	Token    string `json:"token"`
+}
+
+type RegisterResponse struct {
+	Id       string `json:"id"`
+	Enabled  bool   `json:"enabled"`
+	Email    string `json:"email"`
+	Verify   bool   `json:"verify"`
+	Password string `json:"password"`
+	Token    string `json:"token"`
 }
 
 type CheckRole struct {
