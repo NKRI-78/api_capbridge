@@ -29,35 +29,29 @@ func main() {
 	router.Use(middleware.CorsMiddleware)
 	router.Use(middleware.JwtAuthentication)
 
-	// Check if the directory exists, create if it doesn't
-	errMkidr := os.MkdirAll("public", os.ModePerm) // os.ModePerm ensures directory is created with the correct permissions
+	errMkidr := os.MkdirAll("public", os.ModePerm)
 	if errMkidr != nil {
 		log.Fatalf("Failed to create or access directory: %v", err)
 	}
 
-	// Open the public directory
 	dir, err := os.Open("public")
 	if err != nil {
 		log.Fatalf("Failed to open public directory: %v", err)
 	}
 	defer dir.Close()
 
-	// Read the directory contents
 	fileInfos, err := dir.Readdir(-1)
 	if err != nil {
 		log.Fatalf("Failed to read directory contents: %v", err)
 	}
 
-	// Loop through each file in the directory
 	for _, fileInfo := range fileInfos {
 		if fileInfo.IsDir() {
-			// Define static and public paths
 			staticPath := "/" + fileInfo.Name() + "/"
 			publicPath := "./public/" + fileInfo.Name() + "/"
 
 			log.Printf("Serving static files from %s at %s", publicPath, staticPath)
 
-			// Register (override if already exists) the route to serve static content
 			router.PathPrefix(staticPath).Handler(http.StripPrefix(staticPath, http.FileServer(http.Dir(publicPath))))
 		}
 	}
@@ -69,6 +63,9 @@ func main() {
 	// Profile
 	router.HandleFunc("/api/v1/profile", controllers.GetProfile).Methods("GET")
 	router.HandleFunc("/api/v1/profile/update", controllers.UpdateProfile).Methods("PUT")
+
+	// Account
+	router.HandleFunc("/api/v1/account/update", controllers.UpdateAccount).Methods("PUT")
 
 	// Project
 	router.HandleFunc("/api/v1/project/list", controllers.ProjectList).Methods("GET")

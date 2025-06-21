@@ -598,3 +598,41 @@
 [ERROR]: 2025-06-20 17:28:01 - In Server: CREDENTIALS_IS_INCORRECT
 [ERROR]: 2025-06-20 17:28:02 - In Server: CREDENTIALS_IS_INCORRECT
 [INFO]: 2025-06-20 17:28:04 - Login success
+[INFO]: 2025-06-20 21:35:34 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:35:52 - Login success
+[ERROR]: 2025-06-20 21:35:55 - In Server: USER_ALREADY_EXIST
+[ERROR]: 2025-06-20 21:37:32 - In Server: USER_ALREADY_EXIST
+[INFO]: 2025-06-20 21:37:34 - Login success
+[INFO]: 2025-06-20 21:38:03 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:38:11 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:38:11 - Login success
+[INFO]: 2025-06-20 21:38:25 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:38:29 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:38:30 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:42:34 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:42:48 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:43:34 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:43:42 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:43:52 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:44:03 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:44:44 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:44:56 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:45:16 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:45:22 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:45:33 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:45:40 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:47:20 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:48:02 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:48:05 - Connected to database: capbridge
+[INFO]: 2025-06-20 21:50:27 - Login success
+[ERROR]: 2025-06-20 21:50:29 - In Server: USER_ALREADY_EXIST
+[INFO]: 2025-06-20 21:51:03 - Login success
+[ERROR]: 2025-06-20 21:51:05 - In Server: USER_ALREADY_EXIST
+[ERROR]: 2025-06-20 21:52:42 - In Server: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1
+[INFO]: 2025-06-20 21:53:04 - Connected to database: capbridge
+[ERROR]: 2025-06-20 21:53:05 - In Server: USER_ALREADY_EXIST
+[INFO]: 2025-06-20 21:53:18 - Login success
+[ERROR]: 2025-06-20 21:53:51 - In Server: USER_ALREADY_EXIST
+[INFO]: 2025-06-20 21:53:55 - Login success
+[INFO]: 2025-06-20 21:54:09 - Login success
+[INFO]: 2025-06-20 22:25:15 - Connected to database: capbridge

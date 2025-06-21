@@ -47,12 +47,11 @@ func Login(l *entities.Login) (entities.LoginResponse, error) {
 	access := token["token"]
 
 	return entities.LoginResponse{
-		Id:       users[0].Id,
-		Email:    users[0].Email,
-		Password: users[0].Password,
-		Enabled:  users[0].Enabled,
-		Verify:   users[0].Verify,
-		Token:    access,
+		Id:      users[0].Id,
+		Email:   users[0].Email,
+		Enabled: users[0].Enabled,
+		Verify:  users[0].Verify,
+		Token:   access,
 	}, nil
 }
 
@@ -119,6 +118,19 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		return entities.RegisterResponse{}, errInsertProfile
 	}
 
+	if r.Role != "4" {
+
+		queryInsertAccount := `INSERT INTO accounts (user_id) VALUES (?)`
+
+		errInsertAccount := dbDefault.Debug().Exec(queryInsertAccount, r.UserId).Error
+
+		if errInsertAccount != nil {
+			helper.Logger("error", "In Server: "+errInsertAccount.Error())
+			return entities.RegisterResponse{}, errInsertAccount
+		}
+
+	}
+
 	token, errToken := middlewares.CreateToken(r.UserId)
 	if errToken != nil {
 		helper.Logger("error", "In Server: "+errToken.Error())
@@ -128,11 +140,10 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 	access := token["token"]
 
 	return entities.RegisterResponse{
-		Id:       r.UserId,
-		Email:    r.Email,
-		Password: string(hashedPassword),
-		Enabled:  false,
-		Verify:   false,
-		Token:    access,
+		Id:      r.UserId,
+		Email:   r.Email,
+		Enabled: false,
+		Verify:  false,
+		Token:   access,
 	}, nil
 }

@@ -23,21 +23,21 @@ type LoginScan struct {
 }
 
 type LoginResponse struct {
-	Id       string `json:"id"`
-	Enabled  bool   `json:"enabled"`
-	Email    string `json:"email"`
-	Verify   bool   `json:"verify"`
-	Password string `json:"password"`
-	Token    string `json:"token"`
+	Id      string `json:"id"`
+	Enabled bool   `json:"enabled"`
+	Email   string `json:"email"`
+	Role    string `json:"role"`
+	Verify  bool   `json:"verify"`
+	Token   string `json:"token"`
 }
 
 type RegisterResponse struct {
-	Id       string `json:"id"`
-	Enabled  bool   `json:"enabled"`
-	Email    string `json:"email"`
-	Verify   bool   `json:"verify"`
-	Password string `json:"password"`
-	Token    string `json:"token"`
+	Id      string `json:"id"`
+	Enabled bool   `json:"enabled"`
+	Email   string `json:"email"`
+	Role    string `json:"role"`
+	Verify  bool   `json:"verify"`
+	Token   string `json:"token"`
 }
 
 type CheckRole struct {
