@@ -118,9 +118,9 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		return entities.RegisterResponse{}, errors.New("USER_ALREADY_EXIST")
 	}
 
-	queryInsertUser := `INSERT INTO users (uid, email, phone, password) VALUES (?, ?, ?, ?)`
+	queryInsertUser := `INSERT INTO users (uid, email, phone, password, role) VALUES (?, ?, ?, ?, ?)`
 
-	errInsertUser := dbDefault.Debug().Exec(queryInsertUser, r.UserId, r.Email, r.Phone, hashedPassword).Error
+	errInsertUser := dbDefault.Debug().Exec(queryInsertUser, r.UserId, r.Email, r.Phone, hashedPassword, r.Role).Error
 
 	if errInsertUser != nil {
 		helper.Logger("error", "In Server: "+errInsertUser.Error())

@@ -58,6 +58,7 @@ func main() {
 
 	// Admin
 	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET")
+	router.HandleFunc("/api/v1/admin/verify/user", controllers.UpdateAdminVerifyUser).Methods("PUT")
 
 	// Auth
 	router.HandleFunc("/api/v1/auth/login", controllers.Login).Methods("POST")
