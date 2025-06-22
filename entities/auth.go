@@ -18,6 +18,7 @@ type LoginScan struct {
 	Id       string `json:"id"`
 	Enabled  bool   `json:"enabled"`
 	Email    string `json:"email"`
+	Role     string `json:"role"`
 	Verify   bool   `json:"verify"`
 	Password string `json:"password"`
 }

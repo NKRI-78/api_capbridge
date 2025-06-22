@@ -12,8 +12,9 @@ import (
 func Login(l *entities.Login) (entities.LoginResponse, error) {
 
 	users := []entities.LoginScan{}
+	roles := []entities.CheckRole{}
 
-	queryUserExist := `SELECT uid AS id, enabled, password, verify, email FROM users WHERE email = ?`
+	queryUserExist := `SELECT uid AS id, enabled, password, verify, role, email FROM users WHERE email = ?`
 
 	errUser := dbDefault.Debug().Raw(queryUserExist, l.Email).Scan(&users).Error
 
@@ -27,6 +28,22 @@ func Login(l *entities.Login) (entities.LoginResponse, error) {
 	if isUserExist == 0 {
 		helper.Logger("error", "In Server: USER_NOT_FOUND")
 		return entities.LoginResponse{}, errors.New("USER_NOT_FOUND")
+	}
+
+	queryCheckRole := `SELECT id, name FROM user_roles WHERE id = ?`
+
+	errCheckRole := dbDefault.Debug().Raw(queryCheckRole, users[0].Role).Scan(&roles).Error
+
+	if errCheckRole != nil {
+		helper.Logger("error", "In Server: "+errCheckRole.Error())
+		return entities.LoginResponse{}, errors.New(errCheckRole.Error())
+	}
+
+	isCheckRoleExist := len(roles)
+
+	if isCheckRoleExist == 0 {
+		helper.Logger("error", "In Server: ROLE_NOT_FOUND")
+		return entities.LoginResponse{}, errors.New("ROLE_NOT_FOUND")
 	}
 
 	passHashed := users[0].Password
@@ -51,6 +68,7 @@ func Login(l *entities.Login) (entities.LoginResponse, error) {
 		Email:   users[0].Email,
 		Enabled: users[0].Enabled,
 		Verify:  users[0].Verify,
+		Role:    roles[0].Name,
 		Token:   access,
 	}, nil
 }
@@ -129,6 +147,14 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 			return entities.RegisterResponse{}, errInsertAccount
 		}
 
+		queryInsertKtp := `INSERT INTO ktps (user_id) VALUES (?)`
+
+		errInsertKtp := dbDefault.Debug().Exec(queryInsertKtp, r.UserId).Error
+
+		if errInsertKtp != nil {
+			helper.Logger("error", "In Server: "+errInsertKtp.Error())
+			return entities.RegisterResponse{}, errInsertKtp
+		}
 	}
 
 	token, errToken := middlewares.CreateToken(r.UserId)
@@ -144,6 +170,7 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		Email:   r.Email,
 		Enabled: false,
 		Verify:  false,
+		Role:    roles[0].Name,
 		Token:   access,
 	}, nil
 }

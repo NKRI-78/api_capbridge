@@ -56,6 +56,9 @@ func main() {
 		}
 	}
 
+	// Admin
+	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET")
+
 	// Auth
 	router.HandleFunc("/api/v1/auth/login", controllers.Login).Methods("POST")
 	router.HandleFunc("/api/v1/auth/register", controllers.Register).Methods("POST")
