@@ -1,0 +1,44 @@
+[INFO]: 2025-06-23 01:19:25 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:23:44 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:24:15 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:24:20 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:30:06 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:30:14 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:30:35 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:34:22 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:34:24 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:35:05 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:35:28 - Connected to database: capbridge
+[ERROR]: 2025-06-23 01:35:30 - In Server: Missing auth token
+[INFO]: 2025-06-23 01:35:35 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:36:19 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:36:21 - Login success
+[ERROR]: 2025-06-23 01:36:24 - In Server: USER_ALREADY_EXIST
+[INFO]: 2025-06-23 01:38:28 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:38:34 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:40:07 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:43:44 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:46:52 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:50:27 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:50:28 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:50:31 - Connected to database: capbridge
+[ERROR]: 2025-06-23 01:52:16 - In Server: Missing auth token
+[INFO]: 2025-06-23 01:54:16 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:54:23 - Connected to database: capbridge
+[INFO]: 2025-06-23 01:59:39 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:00:42 - Connected to database: capbridge
+[ERROR]: 2025-06-23 02:05:21 - In Server: Missing auth token
+[ERROR]: 2025-06-23 02:05:22 - In Server: Missing auth token
+[INFO]: 2025-06-23 02:06:26 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:18:16 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:18:23 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:21:23 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:22:13 - Connected to database: capbridge
+[INFO]: 2025-06-23 02:22:14 - Connected to database: capbridge
+[ERROR]: 2025-06-23 02:22:29 - In Server: fullname is required
+[INFO]: 2025-06-23 02:24:03 - Connected to database: capbridge
+[ERROR]: 2025-06-23 02:24:11 - In Server: fullname is required
+[ERROR]: 2025-06-23 02:35:27 - In Server: phone is required
+[ERROR]: 2025-06-23 02:35:54 - In Server: phone is required
+[ERROR]: 2025-06-23 02:35:56 - In Server: phone is required
+[INFO]: 2025-06-23 02:36:05 - Login success
