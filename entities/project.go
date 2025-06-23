@@ -51,12 +51,25 @@ type ProjectStore struct {
 }
 
 type ProjectMedia struct {
+	Id   int    `json:"id"`
+	Path string `json:"path"`
+}
+
+type ProjectStoreMedia struct {
 	Id        string `json:"id"`
 	Path      string `json:"path"`
 	ProjectId string `json:"project_id"`
 }
 
 type ProjectLocation struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Url  string `json:"url"`
+	Lat  string `json:"lat"`
+	Lng  string `json:"lng"`
+}
+
+type ProjectStoreLocation struct {
 	Id        int    `json:"id"`
 	ProjectId string `json:"project_id"`
 	Name      string `json:"name"`

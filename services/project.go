@@ -15,7 +15,7 @@ func ProjectList() (map[string]any, error) {
 	var dataProject = make([]entities.ProjectListResponse, 0)
 
 	query := `SELECT uid AS id, title, goal, capital, roi, min_invest, unit_price, unit_total,
-	number_of_unit, period 
+	number_of_unit, periode
 	FROM projects`
 
 	var rows *sql.Rows
@@ -31,10 +31,23 @@ func ProjectList() (map[string]any, error) {
 
 	for rows.Next() {
 		errProjectRows := dbDefault.ScanRows(rows, &project)
-
 		if errProjectRows != nil {
 			helper.Logger("error", "In Server: "+errProjectRows.Error())
-			return nil, errors.New(errProjectRows.Error())
+			return nil, errProjectRows
+		}
+
+		// 🔁 Reset per project
+		dataProjectMedia := make([]entities.ProjectMedia, 0)
+
+		queryProjectMedia := `SELECT id, path FROM project_medias WHERE project_id = ?`
+
+		errProjectMedia := dbDefault.Debug().
+			Raw(queryProjectMedia, project.Id).
+			Scan(&dataProjectMedia).Error
+
+		if errProjectMedia != nil {
+			helper.Logger("error", "In Server: "+errProjectMedia.Error())
+			return nil, errProjectMedia
 		}
 
 		dataProject = append(dataProject, entities.ProjectListResponse{
@@ -42,7 +55,7 @@ func ProjectList() (map[string]any, error) {
 			Title:        project.Title,
 			Goal:         project.Goal,
 			Capital:      project.Capital,
-			Medias:       []entities.ProjectMedia{},
+			Medias:       dataProjectMedia, // ✅ This now holds only media for current project
 			Location:     entities.ProjectLocation{},
 			Doc:          entities.ProjectDoc{},
 			Roi:          project.Roi,
@@ -109,7 +122,7 @@ func ProjectDelete(pd *entities.ProjectDelete) (map[string]any, error) {
 	return map[string]any{}, nil
 }
 
-func ProjectStoreMedia(pm *entities.ProjectMedia) (map[string]any, error) {
+func ProjectStoreMedia(pm *entities.ProjectStoreMedia) (map[string]any, error) {
 
 	queryInsertProjectMedia := `INSERT INTO project_medias (id, project_id, path) VALUES (?, ?, ?)`
 
@@ -125,7 +138,7 @@ func ProjectStoreMedia(pm *entities.ProjectMedia) (map[string]any, error) {
 	}, nil
 }
 
-func ProjectStoreLocation(pl *entities.ProjectLocation) (map[string]any, error) {
+func ProjectStoreLocation(pl *entities.ProjectStoreLocation) (map[string]any, error) {
 
 	queryInsertProjectLocation := `INSERT INTO project_locations (project_id, name, url, lat, lng) VALUES (?, ?, ?, ?, ?)`
 

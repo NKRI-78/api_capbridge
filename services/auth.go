@@ -136,7 +136,7 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		return entities.RegisterResponse{}, errInsertProfile
 	}
 
-	if r.Role != "4" {
+	if r.Role != "3" {
 
 		queryInsertAccount := `INSERT INTO accounts (user_id) VALUES (?)`
 
