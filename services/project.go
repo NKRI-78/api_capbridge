@@ -36,7 +36,6 @@ func ProjectList() (map[string]any, error) {
 			return nil, errProjectRows
 		}
 
-		// 🔁 Reset per project
 		dataProjectMedia := make([]entities.ProjectMedia, 0)
 
 		queryProjectMedia := `SELECT id, path FROM project_medias WHERE project_id = ?`
@@ -50,14 +49,49 @@ func ProjectList() (map[string]any, error) {
 			return nil, errProjectMedia
 		}
 
+		var dataProjectLoc entities.ProjectLocation
+
+		queryProjectLoc := `SELECT id, url, name, lat, lng FROM project_locations WHERE project_id = ?`
+
+		errProjectLoc := dbDefault.Debug().
+			Raw(queryProjectLoc, project.Id).
+			Scan(&dataProjectLoc).Error
+
+		if errProjectLoc != nil {
+			helper.Logger("error", "In Server: "+errProjectLoc.Error())
+			return nil, errProjectLoc
+		}
+
+		var dataProjectDoc entities.ProjectDoc
+
+		queryProjectDoc := `SELECT id, path FROM project_docs WHERE project_id = ?`
+
+		errProjectDoc := dbDefault.Debug().
+			Raw(queryProjectDoc, project.Id).
+			Scan(&dataProjectDoc).Error
+
+		if errProjectDoc != nil {
+			helper.Logger("error", "In Server: "+errProjectDoc.Error())
+			return nil, errProjectDoc
+		}
+
 		dataProject = append(dataProject, entities.ProjectListResponse{
-			Id:           project.Id,
-			Title:        project.Title,
-			Goal:         project.Goal,
-			Capital:      project.Capital,
-			Medias:       dataProjectMedia, // ✅ This now holds only media for current project
-			Location:     entities.ProjectLocation{},
-			Doc:          entities.ProjectDoc{},
+			Id:      project.Id,
+			Title:   project.Title,
+			Goal:    project.Goal,
+			Capital: project.Capital,
+			Medias:  dataProjectMedia,
+			Location: entities.ProjectLocation{
+				Id:   dataProjectLoc.Id,
+				Url:  helper.DefaultIfEmpty(dataProjectLoc.Url, "-"),
+				Name: helper.DefaultIfEmpty(dataProjectLoc.Name, "-"),
+				Lat:  helper.DefaultIfEmpty(dataProjectLoc.Lat, "-"),
+				Lng:  helper.DefaultIfEmpty(dataProjectLoc.Lng, "-"),
+			},
+			Doc: entities.ProjectDoc{
+				Id:   dataProjectDoc.Id,
+				Path: helper.DefaultIfEmpty(dataProjectDoc.Path, "-"),
+			},
 			Roi:          project.Roi,
 			MinInvest:    project.MinInvest,
 			UnitPrice:    project.UnitPrice,

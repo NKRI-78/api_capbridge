@@ -229,3 +229,108 @@
 [INFO]: 2025-06-23 15:41:18 - Connected to database: capbridge
 [INFO]: 2025-06-23 15:41:24 - Connected to database: capbridge
 [INFO]: 2025-06-23 15:41:25 - Project List success
+[INFO]: 2025-06-23 15:43:15 - Project List success
+[INFO]: 2025-06-23 15:45:03 - Connected to database: capbridge
+[INFO]: 2025-06-23 15:45:06 - Connected to database: capbridge
+[INFO]: 2025-06-23 15:58:50 - Connected to database: capbridge
+[INFO]: 2025-06-23 15:59:28 - Connected to database: capbridge
+[INFO]: 2025-06-23 15:59:40 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:03 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:06 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:12 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:16 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:28 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:33 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:34 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:44 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:45 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:48 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:00:54 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:01:42 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:01:47 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:03 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:19 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:23 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:29 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:39 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:47 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:54 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:55 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:02:56 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:00 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:01 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:04 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:08 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:10 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:15 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:16 - Project List success
+[INFO]: 2025-06-23 16:03:29 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:33 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:34 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:03:37 - Project List success
+[INFO]: 2025-06-23 16:03:50 - Connected to database: capbridge
+[ERROR]: 2025-06-23 16:04:11 - In Server: Error 1054 (42S22): Unknown column 'name' in 'field list'
+[ERROR]: 2025-06-23 16:04:12 - In Server: Error 1054 (42S22): Unknown column 'name' in 'field list'
+[INFO]: 2025-06-23 16:04:24 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:04:25 - Project List success
+[INFO]: 2025-06-23 16:06:35 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:37 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:40 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:47 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:48 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:53 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:06:57 - Project List success
+[INFO]: 2025-06-23 16:07:17 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:07:23 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:07:24 - Project List success
+[INFO]: 2025-06-23 16:08:11 - Project List success
+[INFO]: 2025-06-23 16:09:11 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:12 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:16 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:17 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:22 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:34 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:35 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:09:37 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:10:37 - Project List success
+[INFO]: 2025-06-23 16:10:49 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:10:54 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:10:59 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:00 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:04 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:05 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:11 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:14 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:15 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:20 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:24 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:29 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:37 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:49 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:11:50 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:02 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:07 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:09 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:15 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:19 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:26 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:40 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:41 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:48 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:12:55 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:13:03 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:30:25 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:30:39 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:30:55 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:30:58 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:31:03 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:31:09 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:31:16 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:33:28 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:33:34 - Connected to database: capbridge
+[ERROR]: 2025-06-23 16:33:35 - In Server: sql: expected 0 arguments, got 1
+[ERROR]: 2025-06-23 16:33:36 - In Server: sql: expected 0 arguments, got 1
+[INFO]: 2025-06-23 16:33:40 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:33:55 - Connected to database: capbridge
+[INFO]: 2025-06-23 16:33:57 - Project List success
+[INFO]: 2025-06-23 16:46:36 - Project List success
