@@ -7,8 +7,6 @@ import (
 	"strings"
 	helper "superapps/helpers"
 
-	"slices"
-
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -56,9 +54,11 @@ func JwtAuthentication(next http.Handler) http.Handler {
 		// 	return
 		// }
 
-		if slices.Contains(publicPaths, r.URL.Path) {
-			next.ServeHTTP(w, r)
-			return
+		for _, path := range publicPaths {
+			if r.URL.Path == path {
+				next.ServeHTTP(w, r)
+				return
+			}
 		}
 
 		tokenHeader := r.Header.Get("Authorization")
