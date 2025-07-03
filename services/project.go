@@ -126,7 +126,7 @@ func ProjectDetail(id string) (map[string]any, error) {
 	query := `SELECT uid AS id, title, goal, capital, roi, min_invest, unit_price, unit_total,
 		number_of_unit, periode, type_of_bond, nominal_value, time_periode, interest_rate, 
 		interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, 
-		desc_job, is_apbn, is_approved, created_at, updated_at
+		desc_job, is_apbn, is_approved, user_id, created_at, updated_at
 		FROM projects WHERE uid = ?`
 
 	err := dbDefault.Debug().Raw(query, id).Scan(&project).Error
@@ -160,6 +160,15 @@ func ProjectDetail(id string) (map[string]any, error) {
 	if errProjectDoc != nil {
 		helper.Logger("error", "In Server: "+errProjectDoc.Error())
 		return nil, errProjectDoc
+	}
+
+	// Fetch project company
+	var dataProjectCompany entities.ProjectCompany
+	queryProjectCompany := `SELECT company_name FROM companies WHERE user_id = ?`
+	errProjectCompany := dbDefault.Debug().Raw(queryProjectCompany, project.UserId).Scan(&dataProjectCompany).Error
+	if errProjectCompany != nil {
+		helper.Logger("error", "In Server: "+errProjectCompany.Error())
+		return nil, errProjectCompany
 	}
 
 	// Compose detail response, SAME with ProjectListResponse
@@ -197,8 +206,11 @@ func ProjectDetail(id string) (map[string]any, error) {
 		DescJob:                  project.DescJob,
 		IsApbn:                   project.IsApbn,
 		IsApproved:               project.IsApproved,
-		CreatedAt:                project.CreatedAt,
-		UpdatedAt:                project.UpdatedAt,
+		Company: entities.Company{
+			dataProjectCompany.CompanyName,
+		},
+		CreatedAt: project.CreatedAt,
+		UpdatedAt: project.UpdatedAt,
 	}
 
 	return map[string]any{

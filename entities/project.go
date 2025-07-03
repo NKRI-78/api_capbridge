@@ -24,6 +24,7 @@ type ProjectListScan struct {
 	DescJob                  string    `json:"desc_job"`
 	IsApbn                   bool      `json:"is_apbn"`
 	IsApproved               bool      `json:"is_approved"`
+	UserId                   string    `json:"user_id"`
 	CreatedAt                time.Time `json:"created_at"`
 	UpdatedAt                time.Time `json:"updated_at"`
 }
@@ -53,8 +54,13 @@ type ProjectListResponse struct {
 	DescJob                  string          `json:"desc_job"`
 	IsApbn                   bool            `json:"is_apbn"`
 	IsApproved               bool            `json:"is_approved"`
+	Company                  Company         `json:"company"`
 	CreatedAt                time.Time       `json:"created_at"`
 	UpdatedAt                time.Time       `json:"updated_at"`
+}
+
+type Company struct {
+	Name string `json:"name"`
 }
 
 type ProjectStore struct {
@@ -103,6 +109,10 @@ type ProjectStoreLocation struct {
 type ProjectDoc struct {
 	Id   string `json:"id"`
 	Path string `json:"path"`
+}
+
+type ProjectCompany struct {
+	CompanyName string `json:"company_name"`
 }
 
 type ProjectUpdate struct {

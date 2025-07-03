@@ -57,6 +57,7 @@ func main() {
 	}
 
 	// Admin
+	router.HandleFunc("/api/v1/admin/list/project", controllers.AdminListProject).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/v1/admin/verify/user", controllers.UpdateAdminVerifyUser).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/v1/admin/verify/project", controllers.UpdateAdminVerifyProject).Methods("PUT", "OPTIONS")
