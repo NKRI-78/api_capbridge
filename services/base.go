@@ -35,30 +35,6 @@ func InitDBs() {
 	if dbDefault == nil {
 		panic("❌ dbDefault is nil, failed to connect to default DB")
 	}
-
-	// dbPPOB = connectDB(
-	// 	os.Getenv("DB_USER"),
-	// 	os.Getenv("DB_PASSWORD"),
-	// 	os.Getenv("DB_HOST"),
-	// 	os.Getenv("DB_PORT"),
-	// 	os.Getenv("DB_PPOB_NAME"),
-	// )
-
-	// if dbPPOB == nil {
-	// 	panic("❌ dbPPOB is nil, failed to connect to PPOB DB")
-	// }
-
-	// dbPayment = connectDB(
-	// 	os.Getenv("DB_USER"),
-	// 	os.Getenv("DB_PASSWORD"),
-	// 	os.Getenv("DB_HOST"),
-	// 	os.Getenv("DB_PORT"),
-	// 	os.Getenv("DB_PPOB_PAYMENT"),
-	// )
-
-	// if dbPayment == nil {
-	// 	panic("❌ dbPayment is nil, failed to connect to Payment DB")
-	// }
 }
 
 // connectDB connects to a database using GORM v2 and returns *gorm.DB
