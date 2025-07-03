@@ -199,8 +199,8 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		}
 
 		queryInsertBond := `INSERT INTO projects 
-		(type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn)
-	 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+		(user_id, type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn)
+	 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 		isApbn := "0"
 		if r.Emiten.InfoBond.IsApbn {
@@ -208,6 +208,7 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		}
 
 		errInsertBond := dbDefault.Debug().Exec(queryInsertBond,
+			r.UserId,
 			r.Emiten.InfoBond.TypeOfBond,
 			r.Emiten.InfoBond.NominalValue,
 			r.Emiten.InfoBond.TimePeriode,
