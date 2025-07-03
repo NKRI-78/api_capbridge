@@ -474,3 +474,175 @@
 [INFO]: 2025-07-03 20:37:08 - Connected to database: capbridge
 [INFO]: 2025-07-03 20:37:14 - Connected to database: capbridge
 [INFO]: 2025-07-03 20:37:17 - Project Detail success
+[INFO]: 2025-07-03 22:35:15 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:35:16 - Login success
+[INFO]: 2025-07-03 22:35:53 - Login success
+[INFO]: 2025-07-03 22:36:09 - Login success
+[INFO]: 2025-07-03 22:38:02 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:03 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:06 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:10 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:14 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:15 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:18 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:25 - Get Profile success
+[INFO]: 2025-07-03 22:38:46 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:49 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:55 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:38:58 - Get Profile success
+[INFO]: 2025-07-03 22:38:58 - Get Profile success
+[INFO]: 2025-07-03 22:39:15 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:20 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:34 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:36 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:38 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:39:38 - Get Profile success
+[INFO]: 2025-07-03 22:39:55 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:40:07 - Get Profile success
+[INFO]: 2025-07-03 22:45:31 - Get Profile success
+[INFO]: 2025-07-03 22:45:44 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:45:48 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:45:56 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:46:01 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:46:18 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:47:47 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:47:57 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:06 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:08 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:11 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:19 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:24 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:26 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:29 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:42 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:44 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:47 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:52 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:56 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:48:59 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:03 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:05 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:09 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:11 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:13 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:23 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:49:52 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:27 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:29 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:34 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:40 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:45 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:55 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:58 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:50:58 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:06 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:08 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:17 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:23 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:38 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:43 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:46 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:51:50 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:52:18 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:52:20 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:52:21 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:52:23 - Connected to database: capbridge
+[ERROR]: 2025-07-03 22:52:26 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[ERROR]: 2025-07-03 22:52:27 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[INFO]: 2025-07-03 22:53:09 - Connected to database: capbridge
+[ERROR]: 2025-07-03 22:53:10 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[ERROR]: 2025-07-03 22:53:11 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[ERROR]: 2025-07-03 22:53:12 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[INFO]: 2025-07-03 22:53:41 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:06 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:08 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:18 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:28 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:31 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:33 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:35 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:39 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:42 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:45 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:47 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:51 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:52 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:54:56 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:55:01 - Connected to database: capbridge
+[ERROR]: 2025-07-03 22:55:05 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[ERROR]: 2025-07-03 22:55:06 - In Server: invalid field found for struct superapps/entities.ProfileScan's field Emiten: define a valid foreign key for relations or implement the Valuer/Scanner interface
+[INFO]: 2025-07-03 22:55:17 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:55:18 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:55:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:55:23 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:55:29 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:56:28 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:56:42 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:56:44 - Get Profile success
+[INFO]: 2025-07-03 22:57:16 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:57:24 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:57:32 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:57:46 - Get Profile success
+[INFO]: 2025-07-03 22:58:09 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:58:17 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:58:21 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:58:30 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:58:32 - Get Profile success
+[INFO]: 2025-07-03 22:58:54 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:58:55 - Get Profile success
+[INFO]: 2025-07-03 22:58:59 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:59:09 - Connected to database: capbridge
+[INFO]: 2025-07-03 22:59:10 - Get Profile success
+[INFO]: 2025-07-03 23:00:11 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:00:17 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:00:21 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:00:32 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:00:44 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:00:46 - Get Profile success
+[INFO]: 2025-07-03 23:01:01 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:10 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:12 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:14 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:20 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:29 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:31 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:35 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:46 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:01:48 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:03 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:08 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:12 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:19 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:34 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:37 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:45 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:46 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:51 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:02:59 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:00 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:03 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:21 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:25 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:27 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:32 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:34 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:38 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:42 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:03:49 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:04:42 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:05:22 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:05:34 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:05:43 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:05:47 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:05:56 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:05 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:07 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:10 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:12 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:14 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:16 - Connected to database: capbridge
+[INFO]: 2025-07-03 23:06:17 - Connected to database: capbridge

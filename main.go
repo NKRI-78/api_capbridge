@@ -57,27 +57,27 @@ func main() {
 	}
 
 	// Admin
-	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET")
-	router.HandleFunc("/api/v1/admin/verify/user", controllers.UpdateAdminVerifyUser).Methods("PUT")
-	router.HandleFunc("/api/v1/admin/verify/project", controllers.UpdateAdminVerifyProject).Methods("PUT")
+	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/v1/admin/verify/user", controllers.UpdateAdminVerifyUser).Methods("PUT", "OPTIONS")
+	router.HandleFunc("/api/v1/admin/verify/project", controllers.UpdateAdminVerifyProject).Methods("PUT", "OPTIONS")
 
 	// Auth
 	router.HandleFunc("/api/v1/auth/login", controllers.Login).Methods("POST", "OPTIONS")
 	router.HandleFunc("/api/v1/auth/register", controllers.Register).Methods("POST", "OPTIONS")
 
 	// Profile
-	router.HandleFunc("/api/v1/profile", controllers.GetProfile).Methods("GET")
-	router.HandleFunc("/api/v1/profile/update", controllers.UpdateProfile).Methods("PUT")
+	router.HandleFunc("/api/v1/profile", controllers.GetProfile).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/v1/profile/update", controllers.UpdateProfile).Methods("PUT", "OPTIONS")
 
 	// Account
-	router.HandleFunc("/api/v1/account/update", controllers.UpdateAccount).Methods("PUT")
+	router.HandleFunc("/api/v1/account/update", controllers.UpdateAccount).Methods("PUT", "OPTIONS")
 
 	// Project
-	router.HandleFunc("/api/v1/project/list", controllers.ProjectList).Methods("GET")
-	router.HandleFunc("/api/v1/project/detail/{id}", controllers.ProjectDetail).Methods("GET")
-	router.HandleFunc("/api/v1/project/store", controllers.ProjectStore).Methods("POST")
-	router.HandleFunc("/api/v1/project/update", controllers.ProjectUpdate).Methods("PUT")
-	router.HandleFunc("/api/v1/project/delete", controllers.ProjectDelete).Methods("DELETE")
+	router.HandleFunc("/api/v1/project/list", controllers.ProjectList).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/v1/project/detail/{id}", controllers.ProjectDetail).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/v1/project/store", controllers.ProjectStore).Methods("POST", "OPTIONS")
+	router.HandleFunc("/api/v1/project/update", controllers.ProjectUpdate).Methods("PUT", "OPTIONS")
+	router.HandleFunc("/api/v1/project/delete", controllers.ProjectDelete).Methods("DELETE", "OPTIONS")
 
 	portEnv := os.Getenv("PORT")
 	port := ":" + portEnv
