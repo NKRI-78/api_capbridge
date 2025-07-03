@@ -46,6 +46,13 @@ func JwtAuthentication(next http.Handler) http.Handler {
 		publicPaths := []string{
 			"/api/v1/auth/login",
 			"/api/v1/auth/register",
+			"/api/v1/project/list",
+		}
+
+		// Allow access to job-detail/:id
+		if strings.HasPrefix(r.URL.Path, "/api/v1/project/detail/") {
+			next.ServeHTTP(w, r)
+			return
 		}
 
 		// Allow access to job-detail/:id

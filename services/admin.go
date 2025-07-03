@@ -113,3 +113,17 @@ func VerifyUser(avu *entities.AdminVerifyUser) (map[string]any, error) {
 
 	return map[string]any{}, nil
 }
+
+func VerifyProject(avp *entities.AdminVerifyProject) (map[string]any, error) {
+
+	query := `UPDATE projects SET is_approved = ? WHERE uid = ?`
+
+	err := dbDefault.Debug().Exec(query, 1, avp.Id).Error
+
+	if err != nil {
+		helper.Logger("error", "In Server: "+err.Error())
+		return nil, errors.New(err.Error())
+	}
+
+	return map[string]any{}, nil
+}

@@ -199,16 +199,20 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		}
 
 		queryInsertBond := `INSERT INTO projects 
-		(user_id, type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn)
-	 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+		(uid, user_id, title, type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn)
+	 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 		isApbn := "0"
 		if r.Emiten.InfoBond.IsApbn {
 			isApbn = "1"
 		}
 
+		projectId := uuid.NewV4().String()
+
 		errInsertBond := dbDefault.Debug().Exec(queryInsertBond,
+			projectId,
 			r.UserId,
+			r.Emiten.InfoBond.Title,
 			r.Emiten.InfoBond.TypeOfBond,
 			r.Emiten.InfoBond.NominalValue,
 			r.Emiten.InfoBond.TimePeriode,
@@ -225,6 +229,39 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 			helper.Logger("error", "In Server: "+errInsertBond.Error())
 			return entities.RegisterResponse{}, errInsertBond
 		}
+
+		queryInsertBondMedia := `INSERT INTO project_medias (project_id, path) VALUES (?, ?)`
+
+		errInsertBondMedia := dbDefault.Debug().Exec(queryInsertBondMedia, projectId, r.Emiten.InfoBond.Img).Error
+
+		if errInsertBondMedia != nil {
+			helper.Logger("error", "In Server: "+errInsertBondMedia.Error())
+			return entities.RegisterResponse{}, errInsertBondMedia
+		}
+
+		queryInsertProjectLoc := `INSERT INTO project_locations (project_id, name, url, lat, lng) VALUES (?, ?, ?, ?, ?)`
+
+		errInsertProjectLoc := dbDefault.Debug().Exec(queryInsertProjectLoc,
+			projectId, r.Emiten.InfoBond.Location.Name, r.Emiten.InfoBond.Location.Url,
+			r.Emiten.InfoBond.Location.Lat, r.Emiten.InfoBond.Location.Lng,
+		).Error
+
+		if errInsertProjectLoc != nil {
+			helper.Logger("error", "In Server: "+errInsertProjectLoc.Error())
+			return entities.RegisterResponse{}, errInsertProjectLoc
+		}
+
+		queryInsertProjectDoc := `INSERT INTO project_docs (project_id, path) VALUES (?, ?)`
+
+		errInsertProjectDoc := dbDefault.Debug().Exec(queryInsertProjectDoc,
+			projectId, r.Emiten.InfoBond.Doc,
+		).Error
+
+		if errInsertProjectDoc != nil {
+			helper.Logger("error", "In Server: "+errInsertProjectDoc.Error())
+			return entities.RegisterResponse{}, errInsertProjectDoc
+		}
+
 	}
 
 	token, errToken := middlewares.CreateToken(r.UserId)

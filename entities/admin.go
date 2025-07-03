@@ -29,3 +29,7 @@ type AdminListUserResponse struct {
 type AdminVerifyUser struct {
 	UserId string `json:"user_id"`
 }
+
+type AdminVerifyProject struct {
+	Id string `json:"id"`
+}

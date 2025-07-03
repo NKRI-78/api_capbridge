@@ -59,6 +59,7 @@ func main() {
 	// Admin
 	router.HandleFunc("/api/v1/admin/list/user", controllers.AdminListUser).Methods("GET")
 	router.HandleFunc("/api/v1/admin/verify/user", controllers.UpdateAdminVerifyUser).Methods("PUT")
+	router.HandleFunc("/api/v1/admin/verify/project", controllers.UpdateAdminVerifyProject).Methods("PUT")
 
 	// Auth
 	router.HandleFunc("/api/v1/auth/login", controllers.Login).Methods("POST", "OPTIONS")
@@ -73,6 +74,7 @@ func main() {
 
 	// Project
 	router.HandleFunc("/api/v1/project/list", controllers.ProjectList).Methods("GET")
+	router.HandleFunc("/api/v1/project/detail/{id}", controllers.ProjectDetail).Methods("GET")
 	router.HandleFunc("/api/v1/project/store", controllers.ProjectStore).Methods("POST")
 	router.HandleFunc("/api/v1/project/update", controllers.ProjectUpdate).Methods("PUT")
 	router.HandleFunc("/api/v1/project/delete", controllers.ProjectDelete).Methods("DELETE")

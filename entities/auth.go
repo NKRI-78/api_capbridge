@@ -59,16 +59,27 @@ type Emiten struct {
 }
 
 type InfoBond struct {
-	TypeOfBond               string `json:"type_of_bond"`
-	NominalValue             string `json:"nominal_value"`
-	TimePeriode              string `json:"time_periode"`
-	InterestRate             string `json:"interest_rate"`
-	InterestPaymentSchedule  string `json:"interest_payment_schedule"`
-	PrincipalPaymentSchedule string `json:"principal_payment_schedule"`
-	UseOfFunds               string `json:"use_of_funds"`
-	CollateralGuarantee      string `json:"collateral_guarantee"`
-	DescJob                  string `json:"desc_job"`
-	IsApbn                   bool   `json:"is_apbn"`
+	Title                    string   `json:"title"`
+	Img                      string   `json:"img"`
+	Doc                      string   `json:"doc"`
+	Location                 Location `json:"location"`
+	TypeOfBond               string   `json:"type_of_bond"`
+	NominalValue             string   `json:"nominal_value"`
+	TimePeriode              string   `json:"time_periode"`
+	InterestRate             string   `json:"interest_rate"`
+	InterestPaymentSchedule  string   `json:"interest_payment_schedule"`
+	PrincipalPaymentSchedule string   `json:"principal_payment_schedule"`
+	UseOfFunds               string   `json:"use_of_funds"`
+	CollateralGuarantee      string   `json:"collateral_guarantee"`
+	DescJob                  string   `json:"desc_job"`
+	IsApbn                   bool     `json:"is_apbn"`
+}
+
+type Location struct {
+	Name string `json:"name"`
+	Url  string `json:"url"`
+	Lat  string `json:"lat"`
+	Lng  string `json:"lng"`
 }
 
 type Login struct {
