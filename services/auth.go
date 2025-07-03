@@ -127,33 +127,102 @@ func Register(r *entities.Register) (entities.RegisterResponse, error) {
 		return entities.RegisterResponse{}, errors.New(errInsertUser.Error())
 	}
 
-	queryInsertProfile := `INSERT INTO profiles (user_id, fullname) VALUES (?, ?)`
+	if r.Role == "1" {
 
-	errInsertProfile := dbDefault.Debug().Exec(queryInsertProfile, r.UserId, r.Fullname).Error
+		queryInsertProfile := `INSERT INTO profiles (user_id, fullname, gender, last_edu, status_marital) VALUES (?, ?, ?, ?, ?)`
 
-	if errInsertProfile != nil {
-		helper.Logger("error", "In Server: "+errInsertProfile.Error())
-		return entities.RegisterResponse{}, errInsertProfile
-	}
+		errInsertProfile := dbDefault.Debug().Exec(queryInsertProfile, r.UserId, r.Fullname, r.Investor.Gender, r.Investor.LastEdu, r.Investor.StatusMarital).Error
 
-	if r.Role != "3" {
+		if errInsertProfile != nil {
+			helper.Logger("error", "In Server: "+errInsertProfile.Error())
+			return entities.RegisterResponse{}, errInsertProfile
+		}
 
-		queryInsertAccount := `INSERT INTO accounts (user_id) VALUES (?)`
+		queryInsertAccount := `INSERT INTO accounts (user_id, no, bank_name, bank_branch, bank_owner) VALUES (?, ?, ?, ?, ?)`
 
-		errInsertAccount := dbDefault.Debug().Exec(queryInsertAccount, r.UserId).Error
+		errInsertAccount := dbDefault.Debug().Exec(queryInsertAccount,
+			r.UserId, r.Investor.Bank.No, r.Investor.Bank.Name, r.Investor.Bank.Branch, r.Investor.Bank.Owner,
+		).Error
 
 		if errInsertAccount != nil {
 			helper.Logger("error", "In Server: "+errInsertAccount.Error())
 			return entities.RegisterResponse{}, errInsertAccount
 		}
 
-		queryInsertKtp := `INSERT INTO ktps (user_id) VALUES (?)`
+		queryInsertKtp := `INSERT INTO ktps (user_id, nik, place_and_datebirth) VALUES (?, ?, ?)`
 
-		errInsertKtp := dbDefault.Debug().Exec(queryInsertKtp, r.UserId).Error
+		errInsertKtp := dbDefault.Debug().Exec(queryInsertKtp, r.UserId, r.Investor.Ktp, r.Investor.AddressKtp).Error
 
 		if errInsertKtp != nil {
 			helper.Logger("error", "In Server: "+errInsertKtp.Error())
 			return entities.RegisterResponse{}, errInsertKtp
+		}
+
+		queryInsertJob := `INSERT INTO jobs (company_name, company_address, monthly_income, position, user_id) 
+		VALUES (?, ?, ?, ?, ?)`
+
+		errInsertJob := dbDefault.Debug().Exec(queryInsertJob, r.Investor.Job.CompanyName, r.Investor.Job.CompanyAddress, r.Investor.Job.MonthlyIncome, r.Investor.Job.Position, r.UserId).Error
+
+		if errInsertJob != nil {
+			helper.Logger("error", "In Server: "+errInsertJob.Error())
+			return entities.RegisterResponse{}, errInsertJob
+		}
+	}
+
+	if r.Role == "2" {
+
+		queryInsertProfile := `INSERT INTO profiles (user_id, fullname) VALUES (?, ?)`
+
+		errInsertProfile := dbDefault.Debug().Exec(queryInsertProfile, r.UserId, r.Fullname).Error
+
+		if errInsertProfile != nil {
+			helper.Logger("error", "In Server: "+errInsertProfile.Error())
+			return entities.RegisterResponse{}, errInsertProfile
+		}
+
+		queryInsertCompany := `INSERT INTO companies (
+			company_data, company_name, company_nib, 
+			deed_of_incorporation, latest_amendment_deed, sk_kemenkumham, company_address, company_npwp,
+			total_employees, capital_structure, financial_statements, commissioner_name, commissioner_position,
+			commissioner_ktp, commissioner_npwp, director_name, director_position, director_ktp, director_npwp, user_id
+		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+
+		errInsertCompany := dbDefault.Debug().Exec(queryInsertCompany,
+			r.Emiten.CompanyData, r.Emiten.CompanyName, r.Emiten.CompanyNib, r.Emiten.DeedOfIncorporation, r.Emiten.LatestAmendmentDeed, r.Emiten.SkKemenkumham, r.Emiten.CompanyAddress, r.Emiten.CompanyNpwp,
+			r.Emiten.TotalEmployees, r.Emiten.CapitalStructure, r.Emiten.FinancialStatements, r.Emiten.CommisionerName, r.Emiten.CommisionerPosition, r.Emiten.CommisionerKtp, r.Emiten.CommisionerNpwp,
+			r.Emiten.DirectorName, r.Emiten.DirectorPosition, r.Emiten.DirectorKtp, r.Emiten.DirectorNpwp, r.UserId,
+		).Error
+
+		if errInsertCompany != nil {
+			helper.Logger("error", "In Server: "+errInsertCompany.Error())
+			return entities.RegisterResponse{}, errInsertCompany
+		}
+
+		queryInsertBond := `INSERT INTO projects 
+		(type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule, principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn)
+	 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+
+		isApbn := "0"
+		if r.Emiten.InfoBond.IsApbn {
+			isApbn = "1"
+		}
+
+		errInsertBond := dbDefault.Debug().Exec(queryInsertBond,
+			r.Emiten.InfoBond.TypeOfBond,
+			r.Emiten.InfoBond.NominalValue,
+			r.Emiten.InfoBond.TimePeriode,
+			r.Emiten.InfoBond.InterestRate,
+			r.Emiten.InfoBond.InterestPaymentSchedule,
+			r.Emiten.InfoBond.PrincipalPaymentSchedule,
+			r.Emiten.InfoBond.UseOfFunds,
+			r.Emiten.InfoBond.CollateralGuarantee,
+			r.Emiten.InfoBond.DescJob,
+			isApbn,
+		).Error
+
+		if errInsertBond != nil {
+			helper.Logger("error", "In Server: "+errInsertBond.Error())
+			return entities.RegisterResponse{}, errInsertBond
 		}
 	}
 
