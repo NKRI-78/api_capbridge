@@ -17,7 +17,8 @@ func ProjectList() (map[string]any, error) {
 	query := `SELECT uid AS id, title, goal, capital, roi, min_invest, unit_price, unit_total,
 	number_of_unit, periode, type_of_bond, nominal_value, time_periode, interest_rate, interest_payment_schedule,
 	principal_payment_schedule, use_of_funds, collateral_guarantee, desc_job, is_apbn, is_approved
-	FROM projects`
+	FROM projects
+	WHERE is_approved = '1'`
 
 	var rows *sql.Rows
 	var err error
