@@ -137,9 +137,10 @@ func AdminListProject(page, limit string) (map[string]any, error) {
 	p.unit_price, p.unit_total, p.number_of_unit, p.periode, p.type_of_bond,
 	p.nominal_value, p.time_periode, p.interest_rate, p.interest_payment_schedule, p.principal_payment_schedule,
 	p.use_of_funds, p.collateral_guarantee, p.desc_job, p.is_apbn, p.is_approved,
-	u.uid AS user_id, u.email AS user_email, u.phone AS user_phone
+	u.uid AS user_id, u.email AS user_email, u.phone AS user_phone, pro.fullname AS user_name
 	FROM projects p
 	INNER JOIN users u ON u.uid = p.user_id
+	INNER JOIN profiles pro ON pro.user_id = u.uid
 	LIMIT ?, ?`
 
 	rows, err := dbDefault.Debug().Raw(query, offset, limit).Rows()
@@ -155,6 +156,32 @@ func AdminListProject(page, limit string) (map[string]any, error) {
 		if errAdminListUserRows != nil {
 			helper.Logger("error", "In Server: "+errAdminListUserRows.Error())
 			return nil, errors.New(errAdminListUserRows.Error())
+		}
+
+		dataProjectMedia := make([]entities.AdminListMedia, 0)
+
+		queryProjectMedia := `SELECT id, path FROM project_medias WHERE project_id = ?`
+
+		errProjectMedia := dbDefault.Debug().
+			Raw(queryProjectMedia, adminListProject.Id).
+			Scan(&dataProjectMedia).Error
+
+		if errProjectMedia != nil {
+			helper.Logger("error", "In Server: "+errProjectMedia.Error())
+			return nil, errProjectMedia
+		}
+
+		var dataProjectLoc entities.ProjectLocation
+
+		queryProjectLoc := `SELECT id, url, name, lat, lng FROM project_locations WHERE project_id = ?`
+
+		errProjectLoc := dbDefault.Debug().
+			Raw(queryProjectLoc, adminListProject.Id).
+			Scan(&dataProjectLoc).Error
+
+		if errProjectLoc != nil {
+			helper.Logger("error", "In Server: "+errProjectLoc.Error())
+			return nil, errProjectLoc
 		}
 
 		dataAdminListProject = append(dataAdminListProject, entities.AdminListProjectResponse{
@@ -179,8 +206,17 @@ func AdminListProject(page, limit string) (map[string]any, error) {
 			DescJob:                  helper.DefaultIfEmpty(adminListProject.DescJob, "-"),
 			IsApbn:                   adminListProject.IsApbn,
 			IsApproved:               adminListProject.IsApproved,
+			Media:                    dataProjectMedia,
+			Location: entities.AdminListLocation{
+				Id:   dataProjectLoc.Id,
+				Name: dataProjectLoc.Name,
+				Url:  dataProjectLoc.Url,
+				Lat:  dataProjectLoc.Lat,
+				Lng:  dataProjectLoc.Lng,
+			},
 			User: entities.AdminListProjectUser{
 				Id:    adminListProject.UserId,
+				Name:  adminListProject.UserName,
 				Email: adminListProject.UserEmail,
 				Phone: adminListProject.UserPhone,
 			},

@@ -38,6 +38,7 @@ type AdminListProject struct {
 	IsApproved               bool   `json:"is_approved"`
 	UserId                   string `json:"user_id"`
 	UserEmail                string `json:"user_email"`
+	UserName                 string `json:"user_name"`
 	UserPhone                string `json:"user_phone"`
 }
 
@@ -75,11 +76,27 @@ type AdminListProjectResponse struct {
 	DescJob                  string               `json:"desc_job"`
 	IsApbn                   bool                 `json:"is_apbn"`
 	IsApproved               bool                 `json:"is_approved"`
+	Media                    []AdminListMedia       `json:"media"`
+	Location                 AdminListLocation    `json:"location"`
 	User                     AdminListProjectUser `json:"user"`
+}
+
+type AdminListLocation struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Url  string `json:"url"`
+	Lat  string `json:"lat"`
+	Lng  string `json:"lng"`
+}
+
+type AdminListMedia struct {
+	Id   int    `json:"id"`
+	Path string `json:"path"`
 }
 
 type AdminListProjectUser struct {
 	Id    string `json:"id"`
+	Name  string `json:"name"`
 	Email string `json:"email"`
 	Phone string `json:"phone"`
 }
