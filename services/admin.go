@@ -184,6 +184,14 @@ func AdminListProject(page, limit string) (map[string]any, error) {
 			return nil, errProjectLoc
 		}
 
+		var dataProjectCompany entities.ProjectCompany
+		queryProjectCompany := `SELECT company_name FROM companies WHERE user_id = ?`
+		errProjectCompany := dbDefault.Debug().Raw(queryProjectCompany, adminListProject.UserId).Scan(&dataProjectCompany).Error
+		if errProjectCompany != nil {
+			helper.Logger("error", "In Server: "+errProjectCompany.Error())
+			return nil, errProjectCompany
+		}
+
 		dataAdminListProject = append(dataAdminListProject, entities.AdminListProjectResponse{
 			Id:                       adminListProject.Id,
 			Title:                    helper.DefaultIfEmpty(adminListProject.Title, "-"),
@@ -206,7 +214,10 @@ func AdminListProject(page, limit string) (map[string]any, error) {
 			DescJob:                  helper.DefaultIfEmpty(adminListProject.DescJob, "-"),
 			IsApbn:                   adminListProject.IsApbn,
 			IsApproved:               adminListProject.IsApproved,
-			Media:                    dataProjectMedia,
+			Company: entities.AdminListCompany{
+				Name: dataProjectCompany.CompanyName,
+			},
+			Media: dataProjectMedia,
 			Location: entities.AdminListLocation{
 				Id:   dataProjectLoc.Id,
 				Name: dataProjectLoc.Name,

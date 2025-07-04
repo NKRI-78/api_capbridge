@@ -76,9 +76,14 @@ type AdminListProjectResponse struct {
 	DescJob                  string               `json:"desc_job"`
 	IsApbn                   bool                 `json:"is_apbn"`
 	IsApproved               bool                 `json:"is_approved"`
+	Company                  AdminListCompany     `json:"company"`
 	Media                    []AdminListMedia     `json:"media"`
 	Location                 AdminListLocation    `json:"location"`
 	User                     AdminListProjectUser `json:"user"`
+}
+
+type AdminListCompany struct {
+	Name string `json:"name"`
 }
 
 type AdminListLocation struct {
