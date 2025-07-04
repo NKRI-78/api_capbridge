@@ -9,7 +9,7 @@ type AdminListUser struct {
 	Email     string    `json:"email"`
 	Phone     string    `json:"phone"`
 	Role      string    `json:"role"`
-	Verified  bool      `json:"verified"`
+	Verify    bool      `json:"verify"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -76,7 +76,7 @@ type AdminListProjectResponse struct {
 	DescJob                  string               `json:"desc_job"`
 	IsApbn                   bool                 `json:"is_apbn"`
 	IsApproved               bool                 `json:"is_approved"`
-	Media                    []AdminListMedia       `json:"media"`
+	Media                    []AdminListMedia     `json:"media"`
 	Location                 AdminListLocation    `json:"location"`
 	User                     AdminListProjectUser `json:"user"`
 }

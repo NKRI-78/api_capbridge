@@ -42,7 +42,7 @@ func AdminListUser(page, limit string) (map[string]any, error) {
 
 	nextPage = pageinteger + 1
 
-	query := `SELECT u.uid AS id, u.email, p.fullname, u.phone, ur.name AS role, u.created_at, u.updated_at,
+	query := `SELECT u.uid AS id, u.email, p.fullname, u.phone, ur.name AS role, u.created_at, u.verify, u.updated_at,
 	 EXISTS (
 		SELECT 1 
 		FROM ktps k 
@@ -79,7 +79,7 @@ func AdminListUser(page, limit string) (map[string]any, error) {
 			Email:     adminListUser.Email,
 			Phone:     adminListUser.Phone,
 			Role:      adminListUser.Role,
-			Verified:  adminListUser.Verified,
+			Verified:  adminListUser.Verify,
 			CreatedAt: adminListUser.CreatedAt,
 			UpdatedAt: adminListUser.UpdatedAt,
 		})
